@@ -1,43 +1,220 @@
-# computational-graphics-project
-# CS 330 Computational Graphics and Visualization Project
+# 🎨 Computational Graphics Project
 
-## 📦 Project Files
-This repository contains two main components:
+A comprehensive 3D graphics application built with OpenGL, featuring realistic lighting, camera controls, and shader-based rendering. This project demonstrates advanced computer graphics concepts including 3D scene composition, material properties, and interactive navigation.
 
-- `3D_Scene.zip`: A complete archive of my 3D scene project built in OpenGL.
-- `Design_Decisions.docx`: A detailed write-up of my design choices, lighting setup, and object/material decisions during the development process.
+## 📋 Table of Contents
 
-## 🧠 Reflection
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Dependencies](#-dependencies)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Technical Details](#-technical-details)
+- [Development Process](#-development-process)
+- [Reflection](#-reflection)
 
-### How do I approach designing software?
-I approach software design by first understanding the problem, then breaking it into smaller components that can be implemented step-by-step. For this project, I focused on how I wanted the final scene to look and feel, and I mapped each visual element (objects, lighting, materials) to the code that would make it happen.
+## ✨ Features
 
-### What new design skills has your work on the project helped you to craft?
-I developed a better understanding of visual hierarchy, camera angles, and how material and lighting choices work together to shape user perception in a 3D scene. I also got more confident designing realistic object layouts using ambient, diffuse, and specular lighting models.
+### 🎮 Interactive 3D Scene
+- **First-person camera navigation** with WASD movement and mouse look
+- **Realistic lighting system** with ambient, diffuse, and specular components
+- **Material properties** with configurable shininess and reflectivity
+- **Multiple 3D objects** including laptop, dish, cylinder, and more
+- **Texture mapping** with support for various image formats
 
-### What design process did you follow for your project work?
-I followed an iterative process: build something small, test it, tweak it, and repeat. I started with the floor, then added a laptop, a small dish, a red cylinder, and more. After each new element, I adjusted lighting and placement to make everything work together.
+### 🎨 Graphics Features
+- **Shader-based rendering** with vertex and fragment shaders
+- **Dynamic lighting calculations** for realistic material appearance
+- **Camera controls** with zoom, movement speed, and sensitivity adjustment
+- **Normal mapping** for enhanced surface detail
+- **UV scaling** for texture manipulation
 
-### How could tactics from your design approach be applied in future work?
-This approach applies to UI design, game development, or any project where visual clarity matters. Planning out interactions and refining them gradually works well in both technical and creative settings.
+## 📁 Project Structure
 
-### How do I approach developing programs?
-I like to get a basic version working quickly, then slowly add features. I debug as I go and frequently test changes. For the 3D scene, I built and rendered each object one at a time so I could see exactly what changed and avoid breaking previous work.
+```
+computational-graphics-project/
+├── 📄 camera.h                    # Camera class for 3D navigation
+├── 📄 ShaderManager.h             # Shader management header
+├── 📄 ShaderManager.cpp           # Shader loading and management
+├── 📄 linmath.h                   # Linear math utilities
+├── 📄 stb_image.h                 # Image loading library
+├── 📄 Design Decisions.docx       # Design documentation
+├── 📄 7-1_FinalProjectMilestones.sln    # Visual Studio solution
+├── 📄 7-1_FinalProjectMilestones.vcxproj # Visual Studio project
+└── 📄 README.md                   # This file
+```
 
-### What new development strategies did you use while working on your 3D scene?
-I used a shader-based lighting system for the first time, applying realistic materials using ambient, diffuse, and specular terms. I also experimented with normal maps and UV scaling to enhance the look of the textures.
+### 🔧 Core Components
 
-### How did iteration factor into your development?
-Iteration was key. I tried different angles for the lights, adjusted shininess and reflectivity on materials, and tuned how shadows and highlights behaved. Every visual issue taught me something I could fix in the next version.
+#### **Camera System (`camera.h`)**
+- **First-person controls**: WASD movement, mouse look, zoom
+- **Euler angle calculations**: Yaw/pitch with constraint handling
+- **Movement physics**: Speed and sensitivity controls
+- **View matrix generation**: GLM-based matrix calculations
 
-### How has your approach to developing code evolved throughout the milestones?
-At first, I focused only on getting the scene to load. But as I progressed, I started thinking more about user experience, realism, and performance. I also cleaned up my functions and comments to keep the code more maintainable.
+#### **Shader Management (`ShaderManager.h/cpp`)**
+- **Shader loading**: Vertex and fragment shader compilation
+- **Uniform management**: Type-safe uniform value setting
+- **Error handling**: Comprehensive compilation and linking checks
+- **Utility functions**: Support for all OpenGL uniform types
 
-### How can computer science help me in reaching my goals?
-Computer science gives me the power to turn ideas into interactive systems. Whether I’m building dashboards, simulations, or game environments, the logic and structure I’ve learned from this course carry over into everything I do.
+#### **Utility Libraries**
+- **`linmath.h`**: Vector operations (addition, scaling, normalization)
+- **`stb_image.h`**: Multi-format image loading (JPEG, PNG, TGA, BMP, etc.)
 
-### How do computational graphics and visualizations give you new knowledge and skills that can be applied in your future educational pathway?
-These skills help with data visualization, virtual environments, and simulations. If I pursue advanced courses or projects in AI or security, being able to represent information visually is a huge plus.
+## 📦 Dependencies
 
-### How do computational graphics and visualizations give you new knowledge and skills that can be applied in your future professional pathway?
-In the professional world, these skills can be used in UI/UX work, game design, AR/VR development, or security tools that visualize complex data. I now understand how lighting, texture, and layout can make a digital environment feel more real and intuitive.
+### Required Libraries
+- **OpenGL** - Graphics rendering API
+- **GLFW** - Window management and input handling
+- **GLEW** - OpenGL extension loading
+- **GLM** - OpenGL Mathematics library for vector/matrix operations
+
+### Development Environment
+- **Visual Studio 2022** (v143 toolset)
+- **Windows 10/11** (Win32 platform)
+- **C++17** or later
+
+### Library Dependencies
+```cpp
+// Core OpenGL libraries
+glew32.lib
+glfw3.lib
+opengl32.lib
+glu32.lib
+
+// Include directories
+GLFW/include
+GLEW/include
+glm/
+Utilities/
+3DShapes/
+```
+
+## 🚀 Installation
+
+### Prerequisites
+1. **Visual Studio 2022** with C++ development tools
+2. **OpenGL drivers** (usually included with graphics drivers)
+3. **Git** (for version control)
+
+### Setup Steps
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/noahkhomer18/computational-graphics-project.git
+   cd computational-graphics-project
+   ```
+
+2. **Install dependencies**:
+   - Download GLFW from [glfw.org](https://www.glfw.org/)
+   - Download GLEW from [glew.sourceforge.net](https://glew.sourceforge.net/)
+   - Download GLM from [glm.g-truc.net](https://glm.g-truc.net/)
+   - Place libraries in `Libraries/` directory structure
+
+3. **Open in Visual Studio**:
+   - Open `7-1_FinalProjectMilestones.sln`
+   - Configure include and library paths
+   - Build the project (Ctrl+Shift+B)
+
+## 🎮 Usage
+
+### Controls
+- **WASD**: Move forward/backward/left/right
+- **Mouse**: Look around (first-person view)
+- **Scroll wheel**: Adjust movement speed
+- **ESC**: Exit application
+
+### Scene Navigation
+- Use mouse to look around the 3D scene
+- WASD keys for movement through the environment
+- Scroll wheel to adjust camera movement speed
+- Experience realistic lighting and material effects
+
+## 🔬 Technical Details
+
+### Rendering Pipeline
+1. **Vertex Processing**: Transform 3D coordinates using model/view/projection matrices
+2. **Fragment Processing**: Calculate lighting and material properties
+3. **Shader Compilation**: Dynamic shader loading and uniform management
+4. **Texture Mapping**: Multi-format image loading and UV coordinate handling
+
+### Lighting Model
+- **Ambient Lighting**: Base illumination for all surfaces
+- **Diffuse Lighting**: Directional lighting based on surface normals
+- **Specular Lighting**: Reflective highlights for shiny materials
+- **Material Properties**: Configurable shininess and reflectivity
+
+### Camera System
+- **Euler Angles**: Yaw and pitch with constraint handling
+- **View Matrix**: GLM-based lookAt matrix generation
+- **Movement Physics**: Frame-rate independent movement calculations
+- **Input Processing**: Keyboard and mouse input abstraction
+
+## 🛠️ Development Process
+
+### Design Approach
+- **Iterative development**: Build, test, and refine components
+- **Visual-first design**: Plan scene composition before implementation
+- **Modular architecture**: Separate concerns (camera, shaders, materials)
+- **Performance optimization**: Efficient rendering and memory management
+
+### Key Development Strategies
+- **Shader-based lighting**: Realistic material rendering
+- **Normal mapping**: Enhanced surface detail
+- **UV scaling**: Texture manipulation techniques
+- **Code organization**: Clean separation of utilities and core functionality
+
+### Iteration Process
+1. **Basic scene setup**: Floor and fundamental objects
+2. **Lighting implementation**: Ambient, diffuse, and specular components
+3. **Material refinement**: Adjusting shininess and reflectivity
+4. **Camera optimization**: Smooth navigation and controls
+5. **Visual polish**: Texture mapping and final scene composition
+
+## 🎯 Reflection
+
+### Software Design Philosophy
+I approach software design by first understanding the problem domain, then breaking complex systems into manageable components. For this graphics project, I focused on creating a visually compelling scene while maintaining clean, modular code architecture.
+
+### Design Skills Developed
+- **Visual hierarchy**: Understanding how lighting and materials affect perception
+- **3D composition**: Arranging objects for optimal visual impact
+- **Material design**: Balancing realism with performance
+- **User experience**: Intuitive camera controls and navigation
+
+### Development Evolution
+- **Initial focus**: Getting basic 3D rendering working
+- **Progressive enhancement**: Adding lighting, materials, and textures
+- **Performance optimization**: Efficient shader management and rendering
+- **Code quality**: Clean architecture and maintainable code structure
+
+### Future Applications
+These computational graphics skills translate to:
+- **Game development**: 3D environments and character rendering
+- **Data visualization**: Interactive 3D data representation
+- **AR/VR development**: Immersive 3D experiences
+- **UI/UX design**: Understanding visual perception and interaction
+
+## 📚 Educational Value
+
+This project demonstrates mastery of:
+- **OpenGL programming**: Low-level graphics API usage
+- **3D mathematics**: Vector operations and matrix transformations
+- **Shader programming**: GPU-based rendering techniques
+- **Computer graphics theory**: Lighting models and material properties
+- **Software architecture**: Modular design and code organization
+
+## 🤝 Contributing
+
+This is an academic project for CS 330 Computational Graphics and Visualization. For questions or suggestions, please open an issue or contact the repository owner.
+
+## 📄 License
+
+This project is for educational purposes. Some components may be subject to their respective licenses:
+- **stb_image.h**: Public domain
+- **linmath.h**: Public domain
+- **Camera class**: Based on LearnOpenGL.com (CC BY-NC 4.0)
+
+---
+
+*Built with ❤️ for CS 330 Computational Graphics and Visualization*
