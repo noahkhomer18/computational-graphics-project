@@ -31,15 +31,27 @@ set(SOURCES
     src/MainCode.cpp
     src/SceneManager.cpp
     src/ViewManager.cpp
-    ShaderManager.cpp
+    src/Object3D.cpp
+    src/Light.cpp
+    src/ShaderManager.cpp
+    src/PerformanceMonitor.cpp
+    src/DebugRenderer.cpp
+    src/ShadowMapper.cpp
+    src/ParticleSystem.cpp
 )
 
 # Header files
 set(HEADERS
     src/SceneManager.h
     src/ViewManager.h
-    ShaderManager.h
-    camera.h
+    src/Object3D.h
+    src/Light.h
+    include/ShaderManager.h
+    include/camera.h
+    src/PerformanceMonitor.h
+    src/DebugRenderer.h
+    src/ShadowMapper.h
+    src/ParticleSystem.h
 )
 
 # Create executable
@@ -79,3 +91,10 @@ message(STATUS "C++ standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "OpenGL found: ${OpenGL_FOUND}")
 message(STATUS "GLFW found: ${glfw3_FOUND}")
 message(STATUS "GLEW found: ${GLEW_FOUND}")
+
+# Add testing if requested
+option(BUILD_TESTS "Build tests" OFF)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

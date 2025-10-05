@@ -33,15 +33,55 @@ A comprehensive 3D graphics application built with OpenGL, featuring realistic l
 
 ```
 computational-graphics-project/
-├── 📄 camera.h                    # Camera class for 3D navigation
-├── 📄 ShaderManager.h             # Shader management header
-├── 📄 ShaderManager.cpp           # Shader loading and management
-├── 📄 linmath.h                   # Linear math utilities
-├── 📄 stb_image.h                 # Image loading library
-├── 📄 Design Decisions.docx       # Design documentation
-├── 📄 7-1_FinalProjectMilestones.sln    # Visual Studio solution
-├── 📄 7-1_FinalProjectMilestones.vcxproj # Visual Studio project
-└── 📄 README.md                   # This file
+├── 📁 src/                        # Source code
+│   ├── MainCode.cpp               # Main application entry point
+│   ├── SceneManager.h/cpp        # Scene management system
+│   ├── ViewManager.h/cpp          # Viewport and projection handling
+│   ├── Object3D.h/cpp             # 3D object base class
+│   ├── Light.h/cpp                # Lighting system
+│   ├── ShaderManager.cpp          # Shader management
+│   ├── PerformanceMonitor.h/cpp   # Performance monitoring
+│   ├── DebugRenderer.h/cpp        # Debug visualization
+│   ├── ShadowMapper.h/cpp         # Shadow mapping
+│   └── ParticleSystem.h/cpp      # Particle effects
+├── 📁 include/                    # Header files
+│   ├── camera.h                   # Camera class for 3D navigation
+│   ├── ShaderManager.h            # Shader management header
+│   ├── linmath.h                  # Linear math utilities
+│   └── stb_image.h                # Image loading library
+├── 📁 shaders/                    # Shader files
+│   ├── vertex.glsl                # Vertex shader
+│   ├── fragment.glsl              # Fragment shader
+│   ├── lighting.glsl              # Advanced lighting shader
+│   ├── skybox.vert/frag           # Skybox shaders
+│   └── particle.vert/frag         # Particle shaders
+├── 📁 docs/                       # Documentation
+│   ├── API.md                     # API documentation
+│   ├── TUTORIAL.md                # Getting started guide
+│   ├── DESIGN.md                  # System architecture
+│   └── Design Decisions.docx      # Design documentation
+├── 📁 tests/                      # Unit tests
+│   ├── test_camera.cpp            # Camera tests
+│   ├── test_scene.cpp             # Scene management tests
+│   ├── test_performance.cpp       # Performance tests
+│   └── CMakeLists.txt             # Test configuration
+├── 📁 vs/                         # Visual Studio files
+│   ├── 7-1_FinalProjectMilestones.sln
+│   ├── 7-1_FinalProjectMilestones.vcxproj
+│   ├── 7-1_FinalProjectMilestones.vcxproj.filters
+│   └── 7-1_FinalProjectMilestones.vcxproj.user
+├── 📁 scripts/                    # Build and utility scripts
+│   ├── build.bat/sh               # Build scripts
+│   ├── run_tests.bat/sh           # Test runners
+│   └── clean.bat/sh                # Clean scripts
+├── 📁 assets/                     # Game assets
+│   ├── textures/                  # Texture files
+│   └── models/                    # 3D model files
+├── 📄 CMakeLists.txt              # Main CMake configuration
+├── 📄 README.md                   # This file
+├── 📄 LICENSE                     # MIT License
+├── 📄 CONTRIBUTING.md             # Contribution guidelines
+└── 📄 CHANGELOG.md                # Version history
 ```
 
 ### 🔧 Core Components
@@ -111,8 +151,20 @@ Utilities/
    - Download GLM from [glm.g-truc.net](https://glm.g-truc.net/)
    - Place libraries in `Libraries/` directory structure
 
-3. **Open in Visual Studio**:
-   - Open `7-1_FinalProjectMilestones.sln`
+3. **Build the project**:
+
+   **Using CMake (Recommended)**:
+   ```bash
+   # Windows
+   scripts\build.bat
+   
+   # Linux/macOS
+   chmod +x scripts/build.sh
+   ./scripts/build.sh
+   ```
+
+   **Using Visual Studio**:
+   - Open `vs/7-1_FinalProjectMilestones.sln`
    - Configure include and library paths
    - Build the project (Ctrl+Shift+B)
 
